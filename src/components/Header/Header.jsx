@@ -1,7 +1,8 @@
 import { useState } from "react";
 import image from "../../Assets/logo.png";
-
 import style from "./Header.module.css";
+import { Link } from "react-router-dom";
+
 const Header = function () {
   const [btn, setBtn] = useState("Login");
   // let btName = "Login";
@@ -17,23 +18,23 @@ const Header = function () {
   return (
     <nav className={style.header}>
       <div className={style["logo-container"]}>
-        <a href="#">
+        <Link to="/">
           <img src={image} alt="food express" width={"60px"} />
-        </a>
+        </Link>
       </div>
 
       <ul className={style.navbar}>
         <li>
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">Blog</a>
+          <Link to="/blog">Blog</Link>
         </li>
         <li>
-          <a href="#">Contact Us</a>
+          <Link to="/contact">Contact Us</Link>
         </li>
         <li>
-          <a href="#">About Us</a>
+          <Link to="/about">About Us</Link>
         </li>
         <button className={style["login-btn"]} onClick={clickHandler}>
           {btn}

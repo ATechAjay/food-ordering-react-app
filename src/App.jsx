@@ -1,12 +1,46 @@
 import "./App.css";
-import Header from "./components/Header/Header";
+import Root from "./components/pages/Root";
+import About from "./components/pages/About";
+import Contact from "./components/pages/Contact";
+import Blog from "./components/pages/Blog";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Error from "./components/pages/Error";
 import MainContaier from "./components/Main/MainContainer";
+import RestaurantMenu from "./components/pages/RestaurantMenu";
+
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <Error />,
+    children: [
+      { path: "/", element: <MainContaier /> },
+
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        // Dynamic path
+        path: "/restaurants/:restID",
+        element: <RestaurantMenu />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
     <>
-      <Header />
-      <MainContaier />
+      <RouterProvider router={appRouter} />
     </>
   );
 }

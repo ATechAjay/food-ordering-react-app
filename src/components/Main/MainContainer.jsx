@@ -9,7 +9,11 @@ const MainContaier = () => {
   const [filterRes, setFilterRes] = useState();
   const [searchText, setSearchText] = useState("");
   // const [listOfRestaurant, setListOfRestaurant] = useState(DATA)
-  console.log("first");
+  // console.log("first");
+
+  // If no dependencies array, then useEffect() called on every render.
+  // If the dependicies array is empty, then useEffect() is called on intial render and just once.
+  // If there is a dependencies array is present, then useEffect is called when the particular array would be updated.
   useEffect(() => {
     // console.log("Use Effect Function");
     fetchData();
@@ -21,9 +25,9 @@ const MainContaier = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940947&lng=85.1375645"
     );
     const json = await data.json();
-    console.log(
-      json?.data?.cards[2]?.card?.card?.gridElements.infoWithStyle.restaurants
-    );
+    // console.log(
+    //   json?.data?.cards[2]?.card?.card?.gridElements.infoWithStyle.restaurants
+    // );
     setList(
       json?.data?.cards[2]?.card?.card?.gridElements.infoWithStyle.restaurants
     );
@@ -37,14 +41,14 @@ const MainContaier = () => {
     // console.log("After click");
     setFilterRes(filterCard);
   };
-  console.log(list);
+  // console.log(list);
 
   const changeHandler = (event) => {
     setSearchText(event.target.value);
   };
 
   const searchHandler = () => {
-    console.log(searchText);
+    // console.log(searchText);
     const filteredRestaurant = list.filter((res) => {
       // We can also search for cuisines
       // console.log(res?.info?.name);
