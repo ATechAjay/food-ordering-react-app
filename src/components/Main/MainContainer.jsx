@@ -1,13 +1,13 @@
 import Card from "../Card/Card";
 import Shimmer from "../Card/Shimmer";
-// import DATA from "../../utils/LOCAL_DATA";
 import style from "./MainContainer.module.css";
 import { useEffect, useState } from "react";
-
+import RestaurantIsFound from "../pages/RestaurantIsFound";
 const MainContaier = () => {
   const [list, setList] = useState();
   const [filterRes, setFilterRes] = useState();
   const [searchText, setSearchText] = useState("");
+  console.log(searchText);
   // const [listOfRestaurant, setListOfRestaurant] = useState(DATA)
   // console.log("first");
 
@@ -15,7 +15,6 @@ const MainContaier = () => {
   // If the dependicies array is empty, then useEffect() is called on intial render and just once.
   // If there is a dependencies array is present, then useEffect is called when the particular array would be updated.
   useEffect(() => {
-    // console.log("Use Effect Function");
     fetchData();
   }, []);
 
@@ -63,6 +62,11 @@ const MainContaier = () => {
     return <Shimmer />;
   }
 
+  console.log(filterRes);
+
+  if (filterRes.length === 0) {
+    return <RestaurantIsFound />;
+  }
   return (
     <div className={style["main-container"]}>
       <div className={style["search-container"]}>

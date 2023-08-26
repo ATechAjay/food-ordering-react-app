@@ -4,7 +4,17 @@ const RestaurantMenu = () => {
   useEffect(() => {
     fetchMenu();
   }, []);
-  const fetchMenu = async () => {};
+
+  const fetchMenu = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940947&lng=85.1375645"
+    );
+
+    const json = await data.json();
+    console.log(
+      json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
+    );
+  };
 
   return (
     <div className={style["menu-contaier"]}>
