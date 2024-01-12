@@ -2,7 +2,7 @@
 import style from "./Card.module.css";
 import { CARD_IMAGE } from "../../utils/Constant";
 const Card = ({ cardData }) => {
-  // console.log(cardData);
+  console.log(cardData);
   return (
     <div className={style["resturant-constainer"]}>
       {cardData?.map((card) => (

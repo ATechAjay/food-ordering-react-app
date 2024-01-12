@@ -14,7 +14,7 @@ const Header = function () {
     btn === "Login" ? setBtn("Logout") : setBtn("Login");
   };
 
-  console.log(btn);
+  // console.log(btn);
   return (
     <nav className={style.header}>
       <div className={style["logo-container"]}>
