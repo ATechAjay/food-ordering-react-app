@@ -1,4 +1,5 @@
 import "./App.css";
+import React from "react";
 import Root from "./components/pages/Root";
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
@@ -30,7 +31,7 @@ const appRouter = createBrowserRouter([
       },
       {
         // Dynamic path
-        path: "/restaurants/:restID",
+        path: "/restaurants/:restId",
         element: <RestaurantMenu />,
       },
     ],

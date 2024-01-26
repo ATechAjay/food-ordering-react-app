@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import React from "react";
+
 import style from "./RestaurantIsFound.module.css";
 const RestaurantIsFound = () => {
   return (

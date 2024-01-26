@@ -1,7 +1,7 @@
 import Card from "../Card/Card";
 import Shimmer from "../Card/Shimmer";
 import style from "./MainContainer.module.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import RestaurantIsFound from "../pages/RestaurantIsFound";
 const MainContaier = () => {
   const [list, setList] = useState([]);
@@ -11,11 +11,13 @@ const MainContaier = () => {
   // If no dependencies array, then useEffect() called on every render.
 
   // If the dependicies array is empty, then useEffect() is called on intial render and just once.
+
   // If there is a dependencies array is present, then useEffect is called when the particular array would be updated.
 
   useEffect(() => {
     fetchData();
   }, []);
+
   const fetchData = async () => {
     // We can get lattitude and longitude of the use to show the custome data according to the specific locations.
     const data = await fetch(
@@ -50,7 +52,7 @@ const MainContaier = () => {
     setSearchText("");
   };
 
-  if (list.length === 0) {
+  if (list?.length === 0) {
     // Here we can display shimmer UI to the user for better UX.
     return <Shimmer />;
   }
@@ -58,6 +60,15 @@ const MainContaier = () => {
   // if (filterRes.length === 0) {
   //   return <RestaurantIsFound />;
   // }
+
+  // KEYBOARD SHORTCUTS:
+  const hitEnter = (e) => {
+    if (e.key === "Enter") {
+      searchHandler();
+    }
+  };
+
+  document.querySelector("body").addEventListener("keydown", hitEnter);
 
   return (
     <div className={style["main-container"]}>
@@ -68,7 +79,7 @@ const MainContaier = () => {
           value={searchText}
           onChange={changeHandler}
         />
-        <button onClick={searchHandler}>Search Food</button>
+        <button onClick={searchHandler}>Search Food or Reset Filter</button>
         <button onClick={filterHandler}>Filter Top Rated Food</button>
       </div>
       <Card cardData={filterRes} />

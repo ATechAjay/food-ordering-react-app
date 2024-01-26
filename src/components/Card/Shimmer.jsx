@@ -1,4 +1,6 @@
 import style from "./Shimmer.module.css";
+import React from "react";
+
 const Shimmer = (props) => {
   //   console.log(props);
   return (

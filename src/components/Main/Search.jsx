@@ -1,3 +1,4 @@
+import React from "react";
 import style from "./Search.module.css";
 import DATA from "../../utils/LOCAL_DATA";
 // import { useState } from "react";
